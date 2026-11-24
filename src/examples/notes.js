@@ -1,3 +1,4 @@
+import { motionDescriptions } from "../charts/catalog.js";
 export const notes = {
   Room: [
     "Градиент задаёт глубину, а точечная волна просматривается сквозь панели.",
@@ -137,6 +138,16 @@ export const notes = {
   ],
 };
 export function describe(entry) {
+  if (entry.kind)
+    return [
+      entry.subject + ". Сравните два месяца и откройте таблицу значений.",
+      motionDescriptions[entry.group],
+    ];
+  if (entry.id === "SkeletonStates")
+    return [
+      "Выберите экран, секцию или отдельный элемент.",
+      "Мягкая пульсация останавливается после трёх циклов. При уменьшении движения макет статичен.",
+    ];
   return (
     notes[entry.id] ||
     {

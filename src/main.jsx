@@ -2,7 +2,9 @@ import React, { useState, useEffect, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import "./tokens.css";
 import "./guide-theme.css";
-import Portal from "./Portal.jsx";
+import Skeleton, { LoadError } from "./ui/Skeleton.jsx";
+const Portal = lazy(() => import("./Portal.jsx"));
+const Analytics = lazy(() => import("./charts/Analytics.jsx"));
 import Shell from "./shell.jsx";
 import { applyAppearance } from "./ui/Appearance.jsx";
 import { screens } from "./model.js";
@@ -30,20 +32,40 @@ function App() {
   useEffect(() => {
     if (section !== "map")
       document.title =
-        (section === "kit" ? "Справочник" : page[1]) + " · Кваркус Кит";
+        (section === "kit"
+          ? "Справочник"
+          : section === "charts"
+            ? "Аналитика"
+            : page[1]) + " · Кваркус Кит";
   }, [section, page]);
   return (
     <>
       <Shell section={section} />
-      <Suspense fallback={<p role="status">Загрузка…</p>}>
-        {section === "map" ? (
-          <ReferenceMap route={route} />
-        ) : section === "kit" ? (
-          <Library id={target} />
-        ) : (
-          <Portal page={page[0]} />
-        )}
-      </Suspense>
+      <LoadError key={section}>
+        <Suspense
+          fallback={
+            <Skeleton
+              kind={
+                section === "kit"
+                  ? "guide"
+                  : section === "charts"
+                    ? "chart"
+                    : "workspace"
+              }
+            />
+          }
+        >
+          {section === "charts" ? (
+            <Analytics id={id} />
+          ) : section === "map" ? (
+            <ReferenceMap route={route} />
+          ) : section === "kit" ? (
+            <Library id={target} />
+          ) : (
+            <Portal page={page[0]} />
+          )}
+        </Suspense>
+      </LoadError>
     </>
   );
 }

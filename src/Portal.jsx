@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import { Plus, Menu, BookOpen, Check } from "lucide-react";
+import { LoadingBoundary, skeletonFor } from "./ui/Skeleton.jsx";
 import Room from "./ui/Room.jsx";
 import Glass from "./ui/Glass.jsx";
 import Sidebar from "./ui/Sidebar.jsx";
 import Header from "./ui/Header.jsx";
 import Button from "./ui/Button.jsx";
 import PeriodPicker from "./ui/PeriodPicker.jsx";
-import Overview from "./ui/Overview.jsx";
-import Registry from "./ui/Registry.jsx";
-import Agenda from "./ui/Agenda.jsx";
-import SettingsPanel from "./ui/SettingsPanel.jsx";
-import Editor from "./ui/Editor.jsx";
-import CommandSearch from "./ui/CommandSearch.jsx";
+const Overview = lazy(() => import("./ui/Overview.jsx"));
+const Registry = lazy(() => import("./ui/Registry.jsx"));
+const Agenda = lazy(() => import("./ui/Agenda.jsx"));
+const SettingsPanel = lazy(() => import("./ui/SettingsPanel.jsx"));
+const Editor = lazy(() => import("./ui/Editor.jsx"));
+const CommandSearch = lazy(() => import("./ui/CommandSearch.jsx"));
 import Dialog from "./ui/Dialog.jsx";
 import Toast from "./ui/Toast.jsx";
 import Profile from "./ui/Profile.jsx";
-import RecordDetail from "./ui/RecordDetail.jsx";
+const RecordDetail = lazy(() => import("./ui/RecordDetail.jsx"));
 import {
   screens,
   readModel,
@@ -225,54 +226,61 @@ export default function Portal({ page = "overview", onNavigate }) {
               {actions[page]}
             </Button>
           </Header>
-          {page === "overview" ? (
-            <Overview model={model} period={period} onMetric={navigate} />
-          ) : (
-            <div className="inner-scroll" key={page}>
-              {page === "agenda" ? (
-                <Agenda
-                  tasks={model.tasks}
-                  onToggle={(id) =>
-                    setModel((m) => ({
-                      ...m,
-                      tasks: m.tasks.map((t) =>
-                        t.id === id ? { ...t, done: !t.done } : t,
-                      ),
-                    }))
-                  }
-                  onOpen={(t) => detail("agenda", t)}
-                />
-              ) : page === "settings" ? (
-                <form id="office-settings" onSubmit={(e) => e.preventDefault()}>
-                  <SettingsPanel
-                    draft={draft}
-                    setDraft={setDraft}
-                    team={model.team}
-                    onMemberChange={(i, role) => {
-                      if (i === 0) return;
+          <LoadingBoundary key={page} kind={skeletonFor(page)}>
+            {page === "overview" ? (
+              <Overview model={model} period={period} onMetric={navigate} />
+            ) : (
+              <div className="inner-scroll" key={page}>
+                {page === "agenda" ? (
+                  <Agenda
+                    tasks={model.tasks}
+                    onToggle={(id) =>
                       setModel((m) => ({
                         ...m,
-                        team: role
-                          ? m.team.map((t, n) => (n === i ? { ...t, role } : t))
-                          : m.team.filter((_, n) => n !== i),
-                      }));
-                      setNotice("Состав команды обновлён");
-                    }}
-                    onInvite={() => edit("team")}
+                        tasks: m.tasks.map((t) =>
+                          t.id === id ? { ...t, done: !t.done } : t,
+                        ),
+                      }))
+                    }
+                    onOpen={(t) => detail("agenda", t)}
                   />
-                </form>
-              ) : (
-                <Registry
-                  rows={model[page]}
-                  kind={page}
-                  customer={page === "customers"}
-                  filter={filter}
-                  onFilter={setFilter}
-                  onOpen={(r) => detail(page, r)}
-                />
-              )}
-            </div>
-          )}
+                ) : page === "settings" ? (
+                  <form
+                    id="office-settings"
+                    onSubmit={(e) => e.preventDefault()}
+                  >
+                    <SettingsPanel
+                      draft={draft}
+                      setDraft={setDraft}
+                      team={model.team}
+                      onMemberChange={(i, role) => {
+                        if (i === 0) return;
+                        setModel((m) => ({
+                          ...m,
+                          team: role
+                            ? m.team.map((t, n) =>
+                                n === i ? { ...t, role } : t,
+                              )
+                            : m.team.filter((_, n) => n !== i),
+                        }));
+                        setNotice("Состав команды обновлён");
+                      }}
+                      onInvite={() => edit("team")}
+                    />
+                  </form>
+                ) : (
+                  <Registry
+                    rows={model[page]}
+                    kind={page}
+                    customer={page === "customers"}
+                    filter={filter}
+                    onFilter={setFilter}
+                    onOpen={(r) => detail(page, r)}
+                  />
+                )}
+              </div>
+            )}
+          </LoadingBoundary>
         </Glass>
       </div>
       {["customers", "deals", "billing", "agenda"].includes(page) && (
@@ -298,141 +306,145 @@ export default function Portal({ page = "overview", onNavigate }) {
           }
           onClose={() => setPanel(null)}
         >
-          {panel.type === "search" ? (
-            <CommandSearch
-              model={model}
-              onSelect={(x) => {
-                navigate(x.page);
-                setPanel(
-                  x.record
-                    ? {
-                        type: "detail",
-                        kind: x.page,
-                        record: x.record,
-                        fromSearch: true,
-                      }
-                    : null,
-                );
-              }}
-            />
-          ) : panel.type === "profile" ? (
-            <>
-              <Profile
-                onClick={() => {
-                  navigate("settings");
-                  setPanel(null);
+          <LoadingBoundary kind={panel.type === "detail" ? "row" : "form"}>
+            {panel.type === "search" ? (
+              <CommandSearch
+                model={model}
+                onSelect={(x) => {
+                  navigate(x.page);
+                  setPanel(
+                    x.record
+                      ? {
+                          type: "detail",
+                          kind: x.page,
+                          record: x.record,
+                          fromSearch: true,
+                        }
+                      : null,
+                  );
                 }}
               />
-              <footer>
-                <Button
+            ) : panel.type === "profile" ? (
+              <>
+                <Profile
                   onClick={() => {
                     navigate("settings");
                     setPanel(null);
                   }}
-                >
-                  Настройки
-                </Button>
-              </footer>
-            </>
-          ) : panel.type === "detail" ? (
-            <RecordDetail
-              record={panel.record}
-              kind={panel.kind}
-              task={panel.kind === "agenda"}
-              onDefer={() => {
-                const next = new Date(panel.record.date + "T12:00:00Z");
-                next.setUTCDate(next.getUTCDate() + 1);
-                setModel((m) => ({
-                  ...m,
-                  tasks: m.tasks.map((t) =>
-                    t.id === panel.record.id
-                      ? {
-                          ...t,
-                          date: next.toISOString().slice(0, 10),
-                          bucket: "На этой неделе",
-                        }
-                      : t,
-                  ),
-                }));
-                setPanel(null);
-                setNotice("Срок перенесён");
-              }}
-              customer={panel.kind === "customers"}
-              onEdit={() => edit(panel.kind, panel.record)}
-              onMessage={() => setPanel({ ...panel, type: "message" })}
-              onStatus={() => {
-                if (panel.kind === "agenda") {
+                />
+                <footer>
+                  <Button
+                    onClick={() => {
+                      navigate("settings");
+                      setPanel(null);
+                    }}
+                  >
+                    Настройки
+                  </Button>
+                </footer>
+              </>
+            ) : panel.type === "detail" ? (
+              <RecordDetail
+                record={panel.record}
+                kind={panel.kind}
+                task={panel.kind === "agenda"}
+                onDefer={() => {
+                  const next = new Date(panel.record.date + "T12:00:00Z");
+                  next.setUTCDate(next.getUTCDate() + 1);
                   setModel((m) => ({
                     ...m,
                     tasks: m.tasks.map((t) =>
-                      t.id === panel.record.id ? { ...t, done: !t.done } : t,
+                      t.id === panel.record.id
+                        ? {
+                            ...t,
+                            date: next.toISOString().slice(0, 10),
+                            bucket: "На этой неделе",
+                          }
+                        : t,
                     ),
                   }));
                   setPanel(null);
-                  setNotice("Задача обновлена");
-                  return;
-                }
-                const status =
-                  panel.kind === "customers"
-                    ? panel.record.status === "VIP"
-                      ? "Активен"
-                      : "VIP"
-                    : panel.record.status === statuses[panel.kind][2]
-                      ? statuses[panel.kind][0]
-                      : statuses[panel.kind][2];
-                setModel((m) => ({
-                  ...m,
-                  [panel.kind]: m[panel.kind].map((r) =>
-                    r.id === panel.record.id
-                      ? {
-                          ...r,
-                          status,
-                          ...(panel.kind === "deals" ? { date: demoDate } : {}),
-                        }
-                      : r,
-                  ),
-                }));
-                setPanel(null);
-                setNotice("Статус изменён");
-              }}
-            />
-          ) : panel.type === "message" ? (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const message = new FormData(e.currentTarget).get("message");
-                setModel((m) => ({
-                  ...m,
-                  [panel.kind === "agenda" ? "tasks" : panel.kind]: m[
-                    panel.kind === "agenda" ? "tasks" : panel.kind
-                  ].map((r) =>
-                    r.id === panel.record.id ? { ...r, note: message } : r,
-                  ),
-                }));
-                setPanel(null);
-                setNotice("Черновик сохранён");
-              }}
-            >
-              <label className="field">
-                Черновик сообщения
-                <textarea
-                  name="message"
-                  required
-                  defaultValue={panel.record.note || ""}
-                />
-              </label>
-              <footer>
-                <Button type="submit">Сохранить черновик</Button>
-              </footer>
-            </form>
-          ) : (
-            <Editor
-              kind={panel.kind}
-              record={panel.record}
-              onSave={save}
-              onCancel={() => setPanel(null)}
-            />
-          )}
+                  setNotice("Срок перенесён");
+                }}
+                customer={panel.kind === "customers"}
+                onEdit={() => edit(panel.kind, panel.record)}
+                onMessage={() => setPanel({ ...panel, type: "message" })}
+                onStatus={() => {
+                  if (panel.kind === "agenda") {
+                    setModel((m) => ({
+                      ...m,
+                      tasks: m.tasks.map((t) =>
+                        t.id === panel.record.id ? { ...t, done: !t.done } : t,
+                      ),
+                    }));
+                    setPanel(null);
+                    setNotice("Задача обновлена");
+                    return;
+                  }
+                  const status =
+                    panel.kind === "customers"
+                      ? panel.record.status === "VIP"
+                        ? "Активен"
+                        : "VIP"
+                      : panel.record.status === statuses[panel.kind][2]
+                        ? statuses[panel.kind][0]
+                        : statuses[panel.kind][2];
+                  setModel((m) => ({
+                    ...m,
+                    [panel.kind]: m[panel.kind].map((r) =>
+                      r.id === panel.record.id
+                        ? {
+                            ...r,
+                            status,
+                            ...(panel.kind === "deals"
+                              ? { date: demoDate }
+                              : {}),
+                          }
+                        : r,
+                    ),
+                  }));
+                  setPanel(null);
+                  setNotice("Статус изменён");
+                }}
+              />
+            ) : panel.type === "message" ? (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const message = new FormData(e.currentTarget).get("message");
+                  setModel((m) => ({
+                    ...m,
+                    [panel.kind === "agenda" ? "tasks" : panel.kind]: m[
+                      panel.kind === "agenda" ? "tasks" : panel.kind
+                    ].map((r) =>
+                      r.id === panel.record.id ? { ...r, note: message } : r,
+                    ),
+                  }));
+                  setPanel(null);
+                  setNotice("Черновик сохранён");
+                }}
+              >
+                <label className="field">
+                  Черновик сообщения
+                  <textarea
+                    name="message"
+                    required
+                    defaultValue={panel.record.note || ""}
+                  />
+                </label>
+                <footer>
+                  <Button type="submit">Сохранить черновик</Button>
+                </footer>
+              </form>
+            ) : (
+              <Editor
+                kind={panel.kind}
+                record={panel.record}
+                onSave={save}
+                onCancel={() => setPanel(null)}
+              />
+            )}
+          </LoadingBoundary>
         </Dialog>
       )}
       <Toast message={notice} />

@@ -1,0 +1,203 @@
+.analytics {
+  max-width: 1500px;
+  margin: auto;
+  padding: clamp(1rem, 3vw, 3rem);
+  color: var(--ink);
+}
+.analytics > header,
+.chart-head,
+.chart-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.analytics > header {
+  margin-bottom: 1.4rem;
+}
+.analytics > header p,
+.chart-head p,
+.chart-index h2 {
+  font: 650 0.74rem var(--face);
+  color: var(--muted);
+  margin: 0 0 0.4rem;
+}
+.analytics h1,
+.chart-head h2 {
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  margin: 0;
+}
+.analytics h1 {
+  font-size: clamp(1.8rem, 3.5vw, 3.3rem);
+}
+.analytics > header a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.analytics-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 22%) minmax(0, 1fr);
+  gap: 1.3rem;
+  align-items: start;
+}
+.chart-index {
+  max-height: calc(100dvh - 14rem);
+  overflow: auto;
+  padding-right: 0.5rem;
+}
+.chart-index section {
+  display: grid;
+  margin-bottom: 1.2rem;
+}
+.chart-index a {
+  padding: 0.48rem 0.65rem;
+  color: var(--ink);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.chart-index a:hover,
+.chart-index a[aria-current] {
+  background: var(--subtle);
+}
+.chart-index a[aria-current] {
+  box-shadow: inset 3px 0 var(--red);
+}
+.chart-picker {
+  display: none;
+}
+.chart-panel {
+  min-width: 0;
+  width: 100%;
+  padding: clamp(0.8rem, 2vw, 1.6rem);
+  background: var(--pane);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  text-align: left;
+  color: var(--ink);
+}
+.chart-panel .chart-drawing,
+.chart-panel .sk-kind-chart {
+  width: 100%;
+  height: clamp(245px, 38vw, 420px);
+  min-width: 0;
+}
+.chart-panel .sk-kind-chart > div,
+.chart-panel .sk-kind-chart .sk-card {
+  height: 100%;
+}
+.chart-head {
+  margin-bottom: 1rem;
+}
+.chart-head h2 {
+  font-size: clamp(1.26rem, 2.2vw, 2rem);
+}
+.chart-periods,
+.chart-replay {
+  display: inline-flex;
+  border-radius: 9px;
+  background: var(--subtle);
+  border: 1px solid var(--line);
+  padding: 3px;
+}
+.chart-periods button,
+.chart-replay {
+  min-height: 34px;
+  color: var(--ink);
+}
+.chart-replay {
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+}
+.chart-periods button {
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+}
+.chart-periods button[aria-pressed="true"] {
+  background: var(--pane);
+  box-shadow: inset 0 -2px var(--red);
+}
+.chart-table {
+  border-top: 1px solid var(--line);
+  padding-top: 0.7rem;
+}
+.chart-table summary {
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.chart-table > div {
+  overflow: auto;
+  margin-top: 0.8rem;
+  max-height: 22rem;
+}
+.chart-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.chart-table caption {
+  text-align: left;
+  color: var(--muted);
+}
+.chart-table td,
+.chart-table th {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.84rem;
+}
+.chart-foot {
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin: 1rem 0;
+}
+.chart-panel :focus-visible,
+.analytics :focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+.sample:has(.chart-panel) {
+  display: block;
+  width: 100%;
+}
+.chart-drawing svg {
+  max-width: 100%;
+}
+@media (max-width: 760px) {
+  .analytics-layout {
+    display: block;
+  }
+  .chart-index {
+    display: none;
+  }
+  .chart-picker {
+    display: grid;
+    gap: 0.35rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .chart-picker select,
+  .sk-play select {
+    background: var(--pane);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 0.5rem;
+    border-radius: 7px;
+  }
+  .chart-panel .chart-drawing,
+  .chart-panel .sk-kind-chart {
+    height: 285px;
+  }
+  .analytics {
+    padding: 1rem;
+  }
+  .chart-head {
+    align-items: flex-start;
+  }
+}

@@ -10,6 +10,7 @@ export default function Shell({ section }) {
       <nav className="site-links" aria-label="Разделы кита">
         {[
           ["screen", "Рабочий экран", "#screen/overview"],
+          ["charts", "Аналитика", "#charts/ChartLine"],
           ["kit", "Справочник", "#kit"],
           ["map", "Карта", "#map"],
         ].map(([id, label, to]) => (

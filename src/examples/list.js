@@ -1,3 +1,4 @@
+import { charts } from "../charts/catalog.js";
 export const entries = [
   {
     id: "Room",
@@ -254,4 +255,16 @@ export const entries = [
     category: "Движение",
     component: "MotionDemo",
   },
+  {
+    id: "SkeletonStates",
+    title: "Состояния загрузки",
+    category: "Загрузка",
+    component: "Skeleton",
+  },
+  ...charts.map((chart) => ({
+    ...chart,
+    title: chart.title + " · " + chart.subject,
+    category: "Диаграммы",
+    component: "ChartPanel",
+  })),
 ];

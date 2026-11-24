@@ -14,7 +14,7 @@ function dependencies(file, files) {
   if (!/\.(jsx?|css)$/.test(file)) return;
   const source = fs.readFileSync(file, "utf8");
   for (const match of source.matchAll(
-    /(?:from\s+|import\s*|url\(\s*)['"](\.[^'"]+)['"]/g,
+    /(?:from\s+|import\s*\(\s*|import\s*|url\(\s*)['"](\.[^'"]+)['"]/g,
   )) {
     const target = path.posix.normalize(
       path.posix.join(path.posix.dirname(file), match[1]),
@@ -81,10 +81,7 @@ for (const f of [
   ".gitignore",
 ])
   files[f] = bytes(f);
-fs.writeFileSync(
-  output + "/kvarkus-kit.zip",
-  zipSync(files, { level: 6 }),
-);
+fs.writeFileSync(output + "/kvarkus-kit.zip", zipSync(files, { level: 6 }));
 console.log(
   "Packaged " + entries.length + " examples and full editable source.",
 );

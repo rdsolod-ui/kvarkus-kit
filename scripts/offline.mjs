@@ -25,6 +25,9 @@ const licenses = [
   "react/LICENSE",
   "react-dom/LICENSE",
   "lucide-react/LICENSE",
+  "echarts/LICENSE",
+  "echarts/NOTICE",
+  "zrender/LICENSE",
   "@fontsource-variable/inter/LICENSE",
 ]
   .map((f) => fs.readFileSync("node_modules/" + f, "utf8"))
@@ -50,8 +53,7 @@ fs.writeFileSync(
         e.id,
         e.component || e.id,
         describe(e)[1],
-        "https://marketing.parkskazka.ru/kvarkus-kit/guide.html#kit/" +
-          e.id,
+        "https://marketing.parkskazka.ru/kvarkus-kit/guide.html#kit/" + e.id,
       ]),
     ]),
 );

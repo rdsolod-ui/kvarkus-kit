@@ -1,0 +1,164 @@
+.sk {
+  width: 100%;
+  min-width: 0;
+  text-align: left;
+  color: var(--muted);
+  --sk-fill: color-mix(in srgb, currentColor 20%, transparent);
+}
+.sk > div {
+  display: grid;
+  gap: 1rem;
+}
+.sk-shape {
+  display: block;
+  max-width: 100%;
+  border-radius: 6px;
+  background: var(--sk-fill);
+  animation: sk-breathe 1.6s ease-in-out 3 alternate both;
+}
+.sk-title {
+  width: 46%;
+  min-width: 5rem;
+  height: 1.05rem;
+}
+.sk-text {
+  width: 65%;
+  height: 0.65rem;
+}
+.sk-number {
+  width: 48%;
+  height: 1.9rem;
+}
+.sk-button,
+.sk-input {
+  height: 2.35rem;
+}
+.sk-button {
+  width: 6rem;
+}
+.sk-avatar {
+  width: 2.45rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  flex: none;
+}
+.sk-badge {
+  width: 3.35rem;
+  height: 1.15rem;
+  border-radius: 2rem;
+}
+.sk-ring {
+  width: min(12rem, 70%);
+  aspect-ratio: 1;
+  align-self: center;
+  margin: auto;
+  border: 0.9rem solid var(--sk-fill);
+  background: none;
+  border-radius: 50%;
+}
+.sk-card {
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: var(--subtle);
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+.sk-plot {
+  height: clamp(9rem, 24vh, 14rem);
+  display: flex;
+  gap: 2.5%;
+  align-items: flex-end;
+}
+.sk-plot i {
+  flex: 1;
+  border-radius: 5px 5px 0 0;
+}
+.sk-row,
+.sk-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 3.1rem;
+}
+.sk-row > div {
+  display: grid;
+  gap: 0.4rem;
+  flex: 1;
+}
+.sk-tools {
+  justify-content: space-between;
+}
+.sk-metrics,
+.sk-plots,
+.sk-layout,
+.sk-form {
+  display: grid;
+  gap: 0.8rem;
+}
+.sk-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.sk-plots {
+  grid-template-columns: 2fr 1fr;
+}
+.sk-layout {
+  grid-template-columns: minmax(9rem, 21%) minmax(0, 1fr);
+  padding: clamp(0.75rem, 3vw, 3rem);
+}
+.sk-layout > div {
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+}
+.sk-form > div {
+  display: grid;
+  gap: 0.5rem;
+}
+.sk-kind-chart .sk-card {
+  min-height: 16rem;
+}
+.sk-kind-text,
+.sk-kind-badge,
+.sk-kind-button,
+.sk-kind-avatar {
+  padding: 0.8rem;
+}
+.sk-kind-form {
+  max-width: 40rem;
+}
+.sk-play {
+  display: grid;
+  gap: 1rem;
+}
+.sk-play select {
+  max-width: 100%;
+}
+@keyframes sk-breathe {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 650px) {
+  .sk-layout,
+  .sk-plots {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sk-layout > .sk-card:first-child {
+    display: none;
+  }
+  .sk-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sk-shape {
+    animation: none;
+  }
+}
+
+.load-error{padding:1rem;color:var(--ink)}.load-error button{padding:.5rem .75rem;border:1px solid var(--line);border-radius:.5rem}

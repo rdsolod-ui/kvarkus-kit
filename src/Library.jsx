@@ -10,6 +10,7 @@ import {
   Search,
   X,
 } from "lucide-react";
+import Skeleton, { skeletonFor } from "./ui/Skeleton.jsx";
 import { entries } from "./examples/list.js";
 import { describe } from "./examples/notes.js";
 import { download, standalone } from "./export-example.js";
@@ -19,6 +20,7 @@ const raw = import.meta.glob(
   [
     "./ui/*.{jsx,css}",
     "./examples/*.jsx",
+    "./charts/*.{jsx,js,css}",
     "./*.css",
     "./model.js",
     "./motion.js",
@@ -33,7 +35,7 @@ function sources(entry) {
     if (files.has(path) || !raw[path]) return;
     files.add(path);
     for (const [, rel] of raw[path].matchAll(
-      /(?:from\s+|import\s*)['"](\.[^'"]+)['"]/g,
+      /(?:from\s+|import\s*\(\s*|import\s*)['"](\.[^'"]+)['"]/g,
     )) {
       const u = new URL(rel, new URL(path, "https://local.invalid/src/"));
       visit("." + u.pathname.slice(4));
@@ -59,6 +61,9 @@ export default function Library({ id }) {
   const frame = useRef(null),
     timeout = useRef(null);
   const { theme, accent } = useAppearance();
+  const request = [entry.id, run, theme, accent].join("/");
+  const [ready, setReady] = useState("");
+  const [frameError, setFrameError] = useState("");
   const [description, motion] = describe(entry);
   const files = sources(entry);
   const path = files.includes(selected) ? selected : files[0];
@@ -84,10 +89,18 @@ export default function Library({ id }) {
       if (
         e.origin === location.origin &&
         e.source === frame.current?.contentWindow &&
+        e.data?.kind === "kvarkus-preview-error"
+      )
+        setFrameError(e.data.request);
+      if (
+        e.origin === location.origin &&
+        e.source === frame.current?.contentWindow &&
         e.data?.kind === "kvarkus-preview-size" &&
         Number.isFinite(e.data.height)
-      )
+      ) {
         setHeight(Math.min(760, Math.max(240, e.data.height)));
+        setReady(e.data.request);
+      }
     }
     window.addEventListener("message", receive);
     return () => {
@@ -201,16 +214,38 @@ export default function Library({ id }) {
               <RotateCcw /> Повторить
             </button>
           </div>
-          <div className="preview-canvas">
+          <div
+            className="preview-canvas"
+            aria-busy={ready !== request && frameError !== request}
+          >
+            {frameError === request && (
+              <div className="load-error" role="alert">
+                Не удалось загрузить пример.{" "}
+                <button onClick={() => replay((n) => n + 1)}>
+                  Повторить загрузку
+                </button>
+              </div>
+            )}
+            {ready !== request && frameError !== request && (
+              <div className="preview-loading">
+                <Skeleton kind={skeletonFor(entry.id)} />
+              </div>
+            )}
             <iframe
-              key={entry.id + ":" + run}
+              key={request}
               ref={frame}
+              hidden={frameError === request}
+              onLoad={(e) => {
+                const doc = e.currentTarget.contentDocument;
+                if (!doc?.getElementById("root")) setFrameError(request);
+              }}
+              onError={() => setFrameError(request)}
               className={mode === "phone" ? "phone" : ""}
               title={"Живой пример · " + entry.title}
               style={{ height: component === "ScreenDemo" ? 700 : height }}
               src={
                 "./sample.html?" +
-                new URLSearchParams({ id: entry.id, theme, accent })
+                new URLSearchParams({ id: entry.id, theme, accent, request })
               }
             />
           </div>
@@ -247,13 +282,27 @@ export default function Library({ id }) {
               <div className="code-types" role="group" aria-label="Исходники">
                 {[
                   ["Пример", files[0]],
-                  ["React", "./ui/" + component + ".jsx"],
-                  ["CSS", "./ui/" + component + ".css"],
+                  [
+                    "React",
+                    entry.kind
+                      ? "./charts/ChartPanel.jsx"
+                      : "./ui/" + component + ".jsx",
+                  ],
+                  [
+                    "CSS",
+                    entry.kind
+                      ? "./charts/charts.css"
+                      : "./ui/" + component + ".css",
+                  ],
                   [
                     "Движение",
-                    files.includes("./motion.js")
-                      ? "./motion.js"
-                      : "./motion.css",
+                    entry.kind
+                      ? "./charts/ChartCanvas.jsx"
+                      : component === "Skeleton"
+                        ? "./ui/Skeleton.css"
+                        : files.includes("./motion.js")
+                          ? "./motion.js"
+                          : "./motion.css",
                   ],
                 ].map(([label, p]) => (
                   <button
