@@ -1,0 +1,33 @@
+.foundation {
+  display: grid;
+  gap: 20px;
+  align-content: center;
+  color: var(--ink);
+}
+.type-scale h2 {
+  font-size: clamp(24px, 4vw, 42px);
+  letter-spacing: -0.035em;
+}
+.type-scale strong {
+  font-variant-numeric: tabular-nums;
+}
+.tone-chips,
+.token-sizes {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.tone-chips span,
+.token-sizes div {
+  display: grid;
+  gap: 8px;
+}
+.tone-chips span::before,
+.token-sizes i {
+  content: "";
+  height: 40px;
+  width: 54px;
+  border-radius: 9px;
+  background: var(--tone, var(--accent));
+  border: 1px solid var(--line);
+}

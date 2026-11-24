@@ -1,0 +1,64 @@
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.2rem, 1fr));
+  gap: 0.65rem;
+}
+.summary-strip > div {
+  padding: 0.8rem 0.95rem;
+  display: grid;
+  gap: 0.13rem;
+}
+.summary-strip small,
+.summary-strip span {
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+.summary-strip strong {
+  font-size: 1.38rem;
+}
+.summary-strip > div {
+  background: var(--subtle);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.summary-strip {
+  grid-auto-rows: 5.95rem;
+  gap: 0.82rem;
+}
+.summary-strip > .tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.76rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--subtle);
+  border-radius: 1.05rem;
+  text-align: left;
+  gap: 0.13rem;
+}
+.summary-strip > .tile.chosen {
+  background: linear-gradient(130deg, #ab384858, var(--subtle));
+  border-color: #ffb1ab55;
+}
+.summary-strip > .tile:not(:first-child) small::before {
+  display: inline-block;
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--mint);
+  margin-right: 0.34rem;
+}
+.summary-strip > .tile:nth-child(3) small::before {
+  background: #ffb359;
+}
+.summary-strip > .tile:last-child small::before {
+  background: #98a6ff;
+}
+.summary-strip progress {
+  width: 100%;
+  height: 0.35rem;
+  margin-top: auto;
+  accent-color: #ff5148;
+}

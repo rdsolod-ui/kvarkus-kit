@@ -1,0 +1,66 @@
+.appearance,
+.swatches,
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+}
+.appearance {
+  gap: 12px;
+  color: var(--ink);
+}
+.swatches {
+  gap: 2px;
+}
+.swatches button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 34px;
+  position: relative;
+  color: white;
+  padding: 0;
+  isolation: isolate;
+}
+.swatches button::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--chip);
+  z-index: -1;
+}
+.swatches button[aria-pressed="true"]::before {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
+.swatches svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 3;
+}
+.theme-switch {
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 6px 11px;
+  min-height: 34px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.theme-switch svg {
+  width: 15px;
+  height: 15px;
+}
+[data-swatch="coral"] {
+  --chip: #ca4358;
+}
+[data-swatch="teal"] {
+  --chip: #067b72;
+}
+[data-swatch="blue"] {
+  --chip: #296bc2;
+}
+[data-swatch="violet"] {
+  --chip: #8155bf;
+}

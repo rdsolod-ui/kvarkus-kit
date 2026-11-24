@@ -1,0 +1,38 @@
+.toast {
+  position: fixed;
+  z-index: 10;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid #ffffff40;
+  border-radius: 1rem;
+  background: #233443;
+  color: var(--ink);
+  box-shadow: var(--edge);
+  font-size: 0.9rem;
+}
+.toast svg {
+  color: var(--mint);
+  width: 1.2rem;
+}
+.toast-empty {
+  position: absolute;
+}
+
+.toast {
+  min-height: 52px;
+  min-width: min(197px, 92vw);
+  justify-content: center;
+  bottom: 20px;
+  border-radius: 18px;
+  background: white;
+  color: #192439;
+  font-weight: 650;
+}
+.toast svg {
+  color: #2bb288;
+}

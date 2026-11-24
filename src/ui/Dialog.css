@@ -1,0 +1,62 @@
+.dialog {
+  width: min(30rem, calc(100% - 1.5rem));
+  padding: 1.55rem;
+  max-height: 85dvh;
+  overflow: auto;
+  color: var(--ink);
+  background: linear-gradient(140deg, #394e63, #1c2130 80%);
+  border: 1px solid #ffffff47;
+  box-shadow:
+    0 2rem 6rem #0009,
+    inset 0 1px #ffffff26;
+  border-radius: 1.4rem;
+}
+.dialog::backdrop {
+  background: #080b15a8;
+  backdrop-filter: blur(4px);
+}
+.dialog header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+  gap: 1rem;
+}
+.dialog h2 {
+  font-size: 1.4rem;
+}
+.close {
+  border: 1px solid var(--line);
+  width: 2.05rem;
+  height: 2.05rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+.dialog footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.3rem;
+}
+
+.dialog.sheet {
+  position: fixed;
+  inset: 12px 12px 12px auto;
+  margin: 0;
+  height: calc(100dvh - 24px);
+  max-height: none;
+  width: min(440px, calc(100% - 24px));
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #1b2945, #101831);
+  box-shadow: 0 1rem 4rem #07091888;
+}
+.dialog.sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+.dialog.sheet header {
+  margin-bottom: 14px;
+}

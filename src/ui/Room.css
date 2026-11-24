@@ -1,0 +1,41 @@
+.room {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 4% 22%, var(--mist-a), transparent 54%),
+    radial-gradient(ellipse at 82% 79%, var(--mist-b), transparent 52%),
+    linear-gradient(125deg, var(--sky-a), var(--sky-b) 52%, var(--sky-a));
+}
+.room::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 4px 4px,
+      var(--dust) 0.8px,
+      transparent 1.3px
+    )
+    0 0/29px 29px;
+  mask-image: linear-gradient(130deg, #0008, transparent 59%, #0008);
+}
+.particle-wave {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.78;
+}
+:root[data-theme="light"] .particle-wave {
+  filter: invert(1);
+  opacity: 0.38;
+}
+.demo-Room .room,
+.sample .room {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 16px;
+}

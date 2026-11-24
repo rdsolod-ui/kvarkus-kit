@@ -1,0 +1,51 @@
+.editor {
+  display: grid;
+  gap: 0.15rem;
+}
+.editor footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.editor-intro {
+  font-size: 14px;
+  color: var(--muted);
+  margin: -0.4rem 0 1rem;
+}
+.editor .field {
+  gap: 6px;
+}
+.editor .field input,
+.editor select {
+  min-height: 47px;
+}
+.dialog:not(.sheet) {
+  width: min(460px, calc(100% - 24px));
+  border-radius: 20px;
+  padding: 22px;
+  background: linear-gradient(145deg, #1d2c4a, #111a32);
+}
+.dialog header .close {
+  width: 36px;
+  height: 36px;
+}
+.dialog .field + .field {
+  margin-top: 12px;
+}
+
+.editor-fields {
+  display: grid;
+  padding: 4px;
+  margin: -4px;
+}
+.editor .field {
+  margin-bottom: 0;
+}
+.dialog .field + .field {
+  margin-top: 14px;
+}
+.editor-intro {
+  margin-bottom: 12px;
+}

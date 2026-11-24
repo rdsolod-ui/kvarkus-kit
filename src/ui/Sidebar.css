@@ -1,0 +1,149 @@
+.side {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    140deg,
+    #b1d9ec77,
+    #436d8082 28%,
+    #253042c4 70%,
+    #79402db3
+  );
+  padding: 1.15rem 0.92rem;
+  gap: 0.8rem;
+}
+.side nav {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  flex: 1;
+}
+.side nav p {
+  margin: 0.3rem 0.95rem;
+  font: 700 0.63rem/1.7 monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d1dce1a6;
+}
+.side nav p:not(:first-child) {
+  margin-top: 1.05rem;
+}
+.side-foot {
+  display: grid;
+  gap: 0.58rem;
+}
+.fold {
+  position: absolute;
+  right: -1.11rem;
+  top: 2.1rem;
+  z-index: 2;
+  background: #fff;
+  color: #293749;
+  width: 2.12rem;
+  height: 2.12rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.2rem #ffffff29;
+  display: grid;
+  place-items: center;
+}
+.subnav {
+  display: grid;
+  padding-left: 2.9rem;
+}
+.subnav button {
+  text-align: left;
+  color: var(--muted);
+  font-size: 0.78rem;
+  padding: 0.12rem 0.25rem;
+}
+.subnav button[aria-pressed="true"] {
+  color: white;
+  text-decoration: underline;
+}
+.side.folded .brand strong,
+.side.folded .search-trigger span,
+.side.folded kbd,
+.side.folded .nav-item span,
+.side.folded .nav-item b,
+.side.folded .nav-item svg:not(:first-child),
+.side.folded nav p,
+.side.folded .plan-card,
+.side.folded .profile span:not(.avatar) {
+  display: none;
+}
+.side.folded .nav-item,
+.side.folded .profile,
+.side.folded .search-trigger {
+  justify-content: center;
+  padding-inline: 0;
+}
+.side.folded .brand {
+  padding: 0;
+  justify-content: center;
+}
+.side.folded nav {
+  margin-top: 1rem;
+}
+@media (max-width: 800px), (max-height: 540px) {
+  .side,
+  .side.folded {
+    position: fixed;
+    z-index: 5;
+    top: 4.1rem;
+    left: 0.65rem;
+    max-height: calc(100dvh - 5rem);
+    width: min(19rem, 90vw);
+    background: linear-gradient(125deg, #355466, #202438 75%);
+  }
+  .side.folded {
+    display: none;
+  }
+  .side .fold {
+    right: 0.85rem;
+    top: 1rem;
+  }
+  .side .brand {
+    padding-right: 2.8rem;
+  }
+}
+
+.side {
+  min-height: 0;
+  padding-top: 1.23rem;
+  padding-bottom: 1.25rem;
+}
+.side nav {
+  min-height: 0;
+}
+.side.has-subnav .side-foot .plan-card {
+  display: none;
+}
+.subnav {
+  padding: 0 0 0 2rem;
+}
+.subnav button {
+  min-height: 2.36rem;
+  padding: 0.3rem 0.8rem;
+}
+.side .subnav {
+  border-left: 1px solid var(--line);
+  margin-left: 1.9rem;
+  padding-left: 0;
+}
+.side.folded .brand-dots {
+  transform: scale(0.86);
+}
+@media (max-width: 800px), (max-height: 540px) {
+  .portal .side:not(.folded) {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(292px, 85vw);
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0 20px 20px 0;
+    padding: 18px 16px;
+  }
+  .portal:has(.side:not(.folded)) .mobile-top {
+    z-index: 4;
+  }
+}

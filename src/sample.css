@@ -1,0 +1,86 @@
+:root {
+  font-size: 16px;
+}
+.sample {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(16px, 4vw, 46px);
+  min-height: 240px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(
+      ellipse at 2% 5%,
+      color-mix(in srgb, var(--mist-a) 75%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(120deg, var(--sky-a), var(--sky-b) 57%, var(--mist-b));
+}
+.sample.full-screen {
+  display: block;
+  padding: 0;
+}
+.sample.full-screen .portal {
+  min-height: 720px;
+}
+.sample.full-screen .workspace {
+  max-width: 96%;
+  width: 88rem;
+  height: 41rem;
+  grid-template-columns: minmax(160px, 20%) minmax(0, 1fr);
+}
+.sample.full-screen .workspace.compact-side {
+  grid-template-columns: 5rem minmax(0, 1fr);
+}
+.sample output {
+  margin-top: 10px;
+  color: var(--muted);
+}
+.sample .toast {
+  position: absolute;
+  bottom: 12px;
+}
+.sample.demo-Toast {
+  padding-bottom: 70px;
+}
+.sample .sidebar {
+  position: relative;
+}
+.sample .example-overview {
+  min-width: 0;
+}
+.sample .example-line {
+  align-items: center;
+}
+.sample.demo-Registry,
+.sample.demo-Agenda,
+.sample.demo-SettingsPanel {
+  align-content: start;
+}
+.sample.demo-RecordDetail .edit-extra {
+  position: static;
+}
+.sample .action,
+.sample button {
+  max-width: 100%;
+}
+@media (max-width: 800px), (max-height: 540px) {
+  .sample.full-screen .workspace {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+  .sample.full-screen .portal {
+    position: relative;
+  }
+  .sample.full-screen .overview {
+    min-height: 0;
+  }
+  .sample .overview .bars-box,
+  .sample .overview .ring-box {
+    grid-column: 1/-1;
+  }
+}

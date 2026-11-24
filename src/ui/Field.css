@@ -1,0 +1,25 @@
+.field {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--muted);
+  min-width: 0;
+}
+.field + .field {
+  margin-top: 0.7rem;
+}
+.field input,
+.field select {
+  width: 100%;
+  min-height: 2.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: #101c2a99;
+  color: white;
+  padding: 0.55rem 0.8rem;
+}
+.field option {
+  background: #152237;
+  color: white;
+}

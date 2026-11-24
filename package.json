@@ -1,0 +1,28 @@
+{
+  "name": "kvarkus-kit",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/offline.mjs && node scripts/package.mjs",
+    "dev": "vite",
+    "build": "node scripts/offline.mjs && node scripts/package.mjs && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "fflate": "0.8.3",
+    "lucide-react": "0.468.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "vite": "7.3.8"
+  },
+  "description": "Демонстрационный интерфейс отдела продаж автосалона и справочник компонентов на React",
+  "homepage": "https://marketing.parkskazka.ru/kvarkus-kit/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rdsolod-ui/kvarkus-kit.git"
+  }
+}

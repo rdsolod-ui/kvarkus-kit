@@ -1,0 +1,130 @@
+.overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 8.45rem minmax(0, 1fr);
+  gap: 1rem;
+  min-height: 0;
+  flex: 1;
+}
+.overview .bars-box {
+  grid-column: span 2;
+}
+@media (max-width: 800px), (max-height: 540px) {
+  .overview {
+    grid-template-rows: auto auto;
+  }
+  .overview .bars-box,
+  .overview .ring-box {
+    min-height: 20rem;
+  }
+  .overview .metric {
+    min-height: 7.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .overview {
+    gap: 0.65rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .overview .metric:first-child {
+    grid-column: span 2;
+  }
+  .overview .metric {
+    padding: 0.9rem;
+    gap: 0.6rem;
+    min-height: 6.4rem;
+  }
+  .overview .bars-box,
+  .overview .ring-box {
+    grid-column: span 2;
+  }
+  .overview .ring {
+    width: 12rem;
+  }
+  .overview .bars {
+    gap: 0.45rem;
+  }
+  .overview .bars-box {
+    min-height: 18rem;
+  }
+  .overview .ring-box {
+    min-height: 16rem;
+  }
+}
+
+@media (max-width: 800px), (max-height: 540px) {
+  .main-glass .overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 130px 130px 300px 319px;
+    gap: 12px;
+    flex: auto;
+  }
+  .main-glass .overview .metric {
+    padding: 16px;
+    min-height: 0;
+    gap: 10px;
+  }
+  .main-glass .overview > .metric:first-child {
+    grid-column: auto;
+  }
+  .main-glass .overview > .metric:nth-child(3),
+  .main-glass .overview .bars-box,
+  .main-glass .overview .ring-box {
+    grid-column: 1/-1;
+    min-height: 0;
+  }
+  .main-glass .metric-value {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 26px;
+    line-height: 1.12;
+    gap: 3px;
+  }
+  .main-glass .metric-name {
+    min-height: 34px;
+    font-size: 14px;
+  }
+  .main-glass .metric-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .main-glass .overview .bars-box,
+  .main-glass .overview .ring-box {
+    padding: 16px;
+  }
+  .main-glass .bars {
+    gap: 10px;
+  }
+  .main-glass .overview .ring {
+    width: min(238px, 85%);
+    margin: 10px auto 0;
+  }
+  .main-glass .ring b {
+    font-size: 44px;
+  }
+  .main-glass .ring small {
+    font-size: 13px;
+  }
+  .main-glass .bars-box h2,
+  .main-glass .ring-box h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 800px), (max-height: 540px) {
+  .main-glass .bar-column {
+    justify-content: flex-end;
+  }
+  .main-glass .bar-track {
+    height: 156px;
+    flex: none;
+  }
+  .main-glass .bars {
+    gap: 8px;
+  }
+  .main-glass .bar-column span {
+    margin-top: 14px;
+    line-height: 16px;
+  }
+}

@@ -1,0 +1,28 @@
+.list-search {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+  flex: 1;
+  min-width: 8rem;
+  max-width: 24rem;
+  height: 2.4rem;
+  padding: 0.4rem 0.8rem;
+  background: #ffffff10;
+  border: 1px solid #ffffff12;
+  border-radius: 2rem;
+  color: var(--muted);
+}
+.list-search svg {
+  width: 1rem;
+  height: 1rem;
+}
+.list-search input {
+  background: none;
+  border: 0;
+  min-width: 0;
+  width: 100%;
+  font-size: 0.85rem;
+}
+.list-search input::placeholder {
+  color: var(--muted);
+}

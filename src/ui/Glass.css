@@ -1,0 +1,26 @@
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2rem;
+  background: var(--glass);
+  box-shadow: var(--edge);
+  backdrop-filter: blur(1.55rem) saturate(120%);
+  min-width: 0;
+}
+.glass.main-glass {
+  background:
+    radial-gradient(ellipse 70% 20% at 50% 90%, #b05f2e85, transparent 80%),
+    radial-gradient(ellipse at 31% 60%, #174b7066, transparent 44%),
+    var(--glass);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .glass {
+    background: linear-gradient(135deg, #455d71, #17263c 54%, #322734);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: linear-gradient(135deg, #425768, #182639 60%, #362734);
+    backdrop-filter: none;
+  }
+}

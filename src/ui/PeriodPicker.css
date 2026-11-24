@@ -1,0 +1,59 @@
+.period {
+  position: relative;
+}
+.period-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.65rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid #ffffff40;
+  border-radius: 2rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  background: #0a12223b;
+}
+.period-trigger svg:last-child {
+  width: 0.8rem;
+}
+.period-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 8;
+  min-width: 12rem;
+  border: 1px solid var(--line);
+  background: #233045;
+  box-shadow: var(--edge);
+  padding: 0.3rem;
+  border-radius: 0.9rem;
+}
+.period-menu button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  border-radius: 0.5rem;
+}
+.period-menu button:hover,
+.period-menu button:focus-visible {
+  background: var(--subtle);
+}
+
+.period-menu {
+  min-width: 200px;
+  padding: 6px;
+  border-radius: 14px;
+  background: linear-gradient(150deg, #1c2b45, #111b31);
+}
+.period-menu button {
+  height: 44px;
+  position: relative;
+  justify-content: flex-start;
+  padding: 0 12px 0 36px;
+}
+.period-menu button svg {
+  position: absolute;
+  left: 9px;
+}

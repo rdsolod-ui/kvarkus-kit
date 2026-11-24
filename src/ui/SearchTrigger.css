@@ -1,0 +1,56 @@
+.search-trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 2.96rem;
+  padding: 0 0.85rem;
+  gap: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  background: #ffffff12;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.search-trigger svg {
+  width: 1.23rem;
+}
+.search-trigger kbd {
+  margin-left: auto;
+  padding: 0.2rem 0.35rem;
+  border-radius: 0.35rem;
+  background: #ffffff21;
+  font: 600 0.66rem monospace;
+}
+
+.search-trigger input {
+  padding: 0;
+  min-width: 0;
+  width: 100%;
+  background: none;
+  border: 0;
+  font-size: inherit;
+}
+.search-trigger input::placeholder {
+  color: var(--muted);
+}
+.search-trigger button {
+  padding: 0;
+  flex: none;
+}
+.side.folded .search-trigger {
+  position: relative;
+}
+.side.folded .search-trigger input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.search-trigger:focus-within {
+  outline: 2px solid #8bdeff;
+}
+.side.folded .search-trigger button {
+  display: none;
+}

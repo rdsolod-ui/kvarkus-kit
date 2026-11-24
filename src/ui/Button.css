@@ -1,0 +1,29 @@
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  min-height: 2.65rem;
+  border-radius: 2rem;
+  padding: 0.4rem 1.12rem;
+  font-weight: 720;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+.action.primary {
+  background: var(--accent);
+  box-shadow: 0 0.45rem 1.4rem #ef244c42;
+  color: white;
+}
+.action.quiet {
+  background: #11172570;
+  border: 1px solid #ffffff42;
+}
+.action:active {
+  transform: translateY(1px);
+}
+@media (hover: hover) {
+  .action:hover {
+    filter: brightness(1.15);
+  }
+}

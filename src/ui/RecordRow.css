@@ -1,0 +1,56 @@
+.record-row,
+.task-row {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  gap: 0.8rem;
+  min-height: 3.65rem;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0.65rem;
+}
+.record-row:hover,
+.task-row:hover {
+  background: var(--subtle);
+}
+.row-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 0.12rem;
+}
+.row-copy strong {
+  font-size: 0.98rem;
+}
+.row-copy small {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+.record-row > b {
+  font-size: 0.85rem;
+}
+.record-row > svg {
+  color: var(--muted);
+  width: 0.85rem;
+}
+.record-row .avatar {
+  width: 2.35rem;
+  height: 2.35rem;
+  font-size: 0.8rem;
+}
+@media (max-width: 540px) {
+  .record-row {
+    gap: 0.4rem;
+    padding-inline: 0.25rem;
+  }
+  .record-row > b {
+    font-size: 0.72rem;
+  }
+  .record-row > svg {
+    display: none;
+  }
+  .record-row .badge {
+    font-size: 0.65rem;
+  }
+}

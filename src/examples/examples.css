@@ -1,0 +1,67 @@
+.example-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+.example-stack {
+  display: grid;
+  gap: 0.65rem;
+}
+.sample-pad {
+  padding: 2rem;
+}
+.example-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.65rem;
+}
+.example-chart {
+  display: grid;
+  height: 18rem;
+}
+.example-ring {
+  max-width: 18rem;
+}
+.example-ring > section {
+  padding-bottom: 1rem;
+}
+.example-period {
+  display: flex;
+  min-height: 14rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+.example-side {
+  width: 18rem;
+}
+.example-side.narrow {
+  width: 5rem;
+}
+.example-side .side {
+  position: relative;
+  display: flex;
+  inset: auto;
+  height: 42rem;
+  max-height: none;
+  width: auto;
+}
+.example-overview {
+  display: grid;
+  height: 34rem;
+}
+.example-overview .overview {
+  min-height: 0;
+}
+.specimen output {
+  display: block;
+  margin-top: 0.65rem;
+}
+.example-side .side.folded {
+  display: flex;
+}
+@media (max-width: 640px) {
+  .example-overview {
+    height: auto;
+  }
+}

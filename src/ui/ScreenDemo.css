@@ -1,0 +1,10 @@
+.screen-demo {
+  min-width: 0;
+}
+.screen-demo .portal {
+  min-height: 100svh;
+}
+.screen-demo .kit-link,
+.screen-demo .mobile-top a {
+  display: none;
+}

@@ -1,0 +1,27 @@
+.motion-demo {
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+.motion-object {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  align-items: center;
+  gap: 6px 14px;
+  background: var(--pane);
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--ink);
+}
+.motion-object i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.motion-object span {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 13px;
+}

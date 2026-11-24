@@ -1,0 +1,257 @@
+export const entries = [
+  {
+    id: "Room",
+    title: "Градиент и волны частиц",
+    category: "Материалы",
+  },
+  {
+    id: "Glass",
+    title: "Стеклянная панель",
+    category: "Материалы",
+  },
+  {
+    id: "Brand",
+    title: "Знак и название",
+    category: "Навигация",
+  },
+  {
+    id: "Button",
+    title: "Кнопки действий",
+    category: "Управление",
+  },
+  {
+    id: "SearchTrigger",
+    title: "Поле быстрого поиска",
+    category: "Навигация",
+  },
+  {
+    id: "NavItem",
+    title: "Пункт навигации",
+    category: "Навигация",
+  },
+  {
+    id: "Progress",
+    title: "Шкала заполнения",
+    category: "Данные",
+  },
+  {
+    id: "PlanCard",
+    title: "Карточка тарифа",
+    category: "Данные",
+  },
+  {
+    id: "Avatar",
+    title: "Аватар с инициалами",
+    category: "Данные",
+  },
+  {
+    id: "Profile",
+    title: "Профиль менеджера",
+    category: "Навигация",
+  },
+  {
+    id: "Badge",
+    title: "Метки статуса",
+    category: "Данные",
+  },
+  {
+    id: "Metric",
+    title: "Карточка показателя",
+    category: "Данные",
+  },
+  {
+    id: "Bars",
+    title: "Столбчатый график",
+    category: "Графики",
+  },
+  {
+    id: "Ring",
+    title: "Кольцевая диаграмма",
+    category: "Графики",
+  },
+  {
+    id: "PeriodPicker",
+    title: "Выбор периода",
+    category: "Управление",
+  },
+  {
+    id: "Dialog",
+    title: "Диалоговое окно",
+    category: "Управление",
+  },
+  {
+    id: "Field",
+    title: "Поля формы",
+    category: "Управление",
+  },
+  {
+    id: "Toggle",
+    title: "Переключатель",
+    category: "Управление",
+  },
+  {
+    id: "Tabs",
+    title: "Фильтры списка",
+    category: "Управление",
+  },
+  {
+    id: "RecordRow",
+    title: "Строка реестра",
+    category: "Данные",
+  },
+  {
+    id: "SummaryStrip",
+    title: "Сводка реестра",
+    category: "Данные",
+  },
+  {
+    id: "TaskRow",
+    title: "Строка расписания",
+    category: "Данные",
+  },
+  {
+    id: "Toast",
+    title: "Уведомление",
+    category: "Управление",
+  },
+  {
+    id: "Header",
+    title: "Заголовок экрана",
+    category: "Навигация",
+  },
+  {
+    id: "Sidebar",
+    title: "Боковое меню",
+    category: "Навигация",
+  },
+  {
+    id: "Overview",
+    title: "Обзор автосалона",
+    category: "Экраны",
+  },
+  {
+    id: "Registry",
+    title: "Реестр клиентов",
+    category: "Экраны",
+  },
+  {
+    id: "Agenda",
+    title: "Календарь",
+    category: "Экраны",
+  },
+  {
+    id: "SettingsPanel",
+    title: "Настройки автосалона",
+    category: "Экраны",
+  },
+  {
+    id: "Editor",
+    title: "Форма записи",
+    category: "Управление",
+  },
+  {
+    id: "CommandSearch",
+    title: "Палитра поиска",
+    category: "Навигация",
+  },
+  {
+    id: "ListSearch",
+    title: "Поиск по списку",
+    category: "Управление",
+  },
+  {
+    id: "RecordDetail",
+    title: "Карточка записи",
+    category: "Данные",
+  },
+  {
+    id: "Appearance",
+    title: "Оформление",
+    category: "Управление",
+    component: "Appearance",
+  },
+  {
+    id: "ScreenOverview",
+    title: "Обзор",
+    category: "Рабочие экраны",
+    component: "ScreenDemo",
+  },
+  {
+    id: "ScreenAgenda",
+    title: "Календарь",
+    category: "Рабочие экраны",
+    component: "ScreenDemo",
+  },
+  {
+    id: "ScreenCustomers",
+    title: "Клиенты",
+    category: "Рабочие экраны",
+    component: "ScreenDemo",
+  },
+  {
+    id: "ScreenDeals",
+    title: "Сделки",
+    category: "Рабочие экраны",
+    component: "ScreenDemo",
+  },
+  {
+    id: "ScreenBilling",
+    title: "Счета",
+    category: "Рабочие экраны",
+    component: "ScreenDemo",
+  },
+  {
+    id: "ScreenSettings",
+    title: "Настройки",
+    category: "Рабочие экраны",
+    component: "ScreenDemo",
+  },
+  {
+    id: "TokenColor",
+    title: "Цвет и темы",
+    category: "Токены",
+    component: "Foundation",
+  },
+  {
+    id: "TokenType",
+    title: "Кириллическая типографика",
+    category: "Токены",
+    component: "Foundation",
+  },
+  {
+    id: "TokenRadius",
+    title: "Радиусы",
+    category: "Токены",
+    component: "Foundation",
+  },
+  {
+    id: "TokenSpace",
+    title: "Шкала отступов",
+    category: "Токены",
+    component: "Foundation",
+  },
+  {
+    id: "MotionSection",
+    title: "Переход между разделами",
+    category: "Движение",
+    component: "MotionDemo",
+  },
+  {
+    id: "MotionSheet",
+    title: "Вход боковой панели",
+    category: "Движение",
+    component: "MotionDemo",
+  },
+  {
+    id: "MotionPop",
+    title: "Раскрытие диалога",
+    category: "Движение",
+    component: "MotionDemo",
+  },
+  {
+    id: "MotionValue",
+    title: "Смена значения",
+    category: "Движение",
+    component: "MotionDemo",
+  },
+];

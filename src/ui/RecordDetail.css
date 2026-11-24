@@ -1,0 +1,87 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+.detail-body {
+  overflow: auto;
+  flex: 1;
+  min-height: 0;
+}
+.detail-big {
+  display: block;
+  font: 730 1.75rem/1.22 var(--display);
+  margin: 0.35rem 0;
+}
+.detail-body > p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.detail dl {
+  margin: 1rem 0;
+  display: block;
+}
+.detail dl > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  min-height: 3rem;
+  gap: 1rem;
+}
+.detail dt {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+.detail dd {
+  margin: 0;
+  font-weight: 650;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+.detail-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 1rem;
+}
+.detail-actions .action,
+.dialog footer .action {
+  min-height: 39px;
+  border-radius: 12px;
+}
+.edit-extra {
+  font-size: 11px;
+  text-align: right;
+  color: var(--muted);
+}
+.edit-extra summary {
+  cursor: pointer;
+}
+.dialog.sheet .detail {
+  overflow: auto;
+}
+.dialog.sheet header h2 {
+  font-size: 21px;
+}
+
+.dialog.sheet .edit-extra {
+  position: absolute;
+  right: 22px;
+  bottom: calc(22px + 6.2rem);
+  margin: 0;
+}
+.dialog.sheet:has(.detail-actions > .action:nth-child(3)) .edit-extra {
+  bottom: calc(22px + 9.3rem);
+}
+.dialog.sheet .edit-extra[open] {
+  background: #19273d;
+  padding: 6px;
+  border-radius: 8px;
+}
+.dialog.sheet .detail-body {
+  padding-bottom: 24px;
+}
+.detail dl {
+  margin-top: 0.7rem;
+}

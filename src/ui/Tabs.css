@@ -1,0 +1,19 @@
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.pills button {
+  color: var(--muted);
+  border-radius: 1rem;
+  padding: 0.36rem 0.85rem;
+  background: #ffffff0b;
+  border: 1px solid var(--line);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+.pills button[aria-pressed="true"] {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}

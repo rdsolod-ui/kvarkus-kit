@@ -1,0 +1,167 @@
+.library,
+.ref-map {
+  background: var(--base) !important;
+  color: var(--ink) !important;
+}
+.lib-main {
+  padding-top: clamp(26px, 4vw, 56px);
+}
+.lib-title {
+  margin: 5px 0 10px;
+}
+.lib-description,
+.guide-motion {
+  max-width: 74ch;
+  color: var(--muted);
+  font-size: 15px;
+}
+.library .lib-kicker,
+.library .lib-side h3 {
+  color: var(--accent-text);
+}
+.library
+  :is(.lib-side h2 span, .lib-side nav a, .file-selector label, .lib-foot),
+.ref-map
+  :is(
+    .map-description,
+    .map-inspect p,
+    .map-trigger,
+    .map-controls label,
+    .map-index code,
+    .map-inspect caption
+  ) {
+  color: var(--muted);
+}
+.library .lib-side nav a[aria-current],
+.library .lib-side nav a:hover {
+  color: var(--ink);
+  background: var(--subtle);
+}
+.library .lib-side nav a[aria-current] {
+  box-shadow: inset 3px 0 var(--coral);
+}
+.lib-side {
+  border-color: var(--line);
+}
+.library
+  :is(
+    .lib-search,
+    .lib-side select,
+    .file-selector select,
+    .source-block,
+    .browse
+  ),
+.ref-map :is(.map-inspect, .map-canvas, .map-controls select) {
+  background: var(--solid);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.library .source-block pre {
+  background: var(--control-bg);
+  color: var(--ink);
+}
+.library .source-block header,
+.library .file-selector {
+  border-color: var(--line);
+}
+.preview-tools,
+.preview-tools > div,
+.guide-actions,
+.code-types {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.preview-tools {
+  justify-content: space-between;
+  margin: 20px 0 9px;
+}
+.preview-tools :is(button, a),
+.guide-actions :is(button, a),
+.code-types button,
+.library .source-block button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 13px/1.3 var(--face);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--subtle);
+}
+.preview-tools button[aria-pressed="true"],
+.library .code-types button[aria-pressed="true"] {
+  color: var(--accent-text);
+  border-color: var(--coral);
+}
+.preview-canvas {
+  text-align: center;
+  border: 1px solid var(--border-hi);
+  background: var(--solid);
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 8px;
+}
+.preview-canvas iframe {
+  display: block;
+  margin: auto;
+  border: 0;
+  border-radius: 12px;
+  width: 100%;
+  min-width: 0;
+}
+.preview-canvas iframe.phone {
+  max-width: 390px;
+}
+.guide-actions {
+  margin: 12px 0 18px;
+}
+.guide-actions button:first-child {
+  background: var(--accent);
+  color: white;
+}
+.guide-motion b {
+  color: var(--ink);
+  margin-right: 6px;
+}
+.file-selector {
+  display: grid;
+  gap: 12px;
+}
+.file-selector label {
+  min-width: 0;
+}
+.guide-msg {
+  min-height: 1.5em;
+  color: var(--mint);
+}
+.map-legend label {
+  color: var(--ink) !important;
+}
+.map-index a[aria-current] {
+  color: var(--accent-text) !important;
+}
+.map-head,
+.map-index a {
+  border-color: var(--line);
+}
+@media (max-width: 600px) {
+  .lib-main {
+    padding-inline: 12px;
+  }
+  .library .source-block header {
+    flex-wrap: wrap;
+  }
+  .preview-canvas {
+    padding: 3px;
+  }
+  .preview-tools button,
+  .guide-actions :is(button, a) {
+    min-height: 40px;
+  }
+  .file-selector select {
+    width: 100%;
+  }
+}

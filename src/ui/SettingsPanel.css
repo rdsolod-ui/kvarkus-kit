@@ -1,0 +1,153 @@
+.settings {
+  display: grid;
+  gap: 1rem;
+}
+.settings-card {
+  padding: 1rem;
+  background: var(--subtle);
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+}
+.office-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+.office-grid .field {
+  margin: 0;
+}
+.settings-card header,
+.team-person {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.settings-card header {
+  justify-content: space-between;
+}
+.team-person {
+  margin: 0.65rem 0;
+}
+.team-person span > small {
+  display: block;
+  color: var(--muted);
+}
+@media (max-width: 500px) {
+  .office-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.settings-column {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-width: 0;
+}
+@media (min-width: 801px) {
+  .settings {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: start;
+  }
+}
+
+.settings-card {
+  padding: 1.15rem 1.23rem;
+}
+.settings-card h2 {
+  font-size: 1.14rem;
+  margin: 0 0 0.7rem;
+}
+.team-entry {
+  position: relative;
+}
+.team-person {
+  width: 100%;
+  min-height: 3.38rem;
+  margin: 0;
+  text-align: left;
+  border-radius: 0.7rem;
+}
+.team-person:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.team-person .avatar {
+  width: 2.36rem;
+  height: 2.36rem;
+  border-radius: 0.66rem;
+}
+.team-person > svg {
+  margin-left: auto;
+  width: 0.85rem;
+}
+.role-menu {
+  position: absolute;
+  inset: 100% 0 auto;
+  z-index: 3;
+  background: #1d2a44;
+  box-shadow: var(--edge);
+  padding: 0.4rem;
+  border-radius: 0.8rem;
+}
+.role-menu button {
+  display: block;
+  width: 100%;
+  min-height: 2.65rem;
+  text-align: left;
+}
+.role-menu button:hover {
+  background: var(--subtle);
+}
+.settings-card .toggle {
+  min-height: 3.93rem;
+}
+.settings-card .field input {
+  height: 2.65rem;
+}
+.settings-card .action {
+  min-height: 2.1rem;
+}
+.settings-column > .plan-card {
+  padding: 1.15rem 1.2rem;
+  min-height: 6.65rem;
+}
+.settings-column > .plan-card progress {
+  order: 1;
+  background: #ffffff20;
+}
+.settings-column > .plan-card small {
+  order: 2;
+}
+.settings-column > .plan-card progress::-webkit-progress-value {
+  background: var(--accent);
+}
+
+.role-menu {
+  left: -8px;
+  right: -8px;
+  top: calc(100% + 5px);
+  padding: 7px;
+}
+.role-menu button {
+  min-height: 44px;
+}
+.settings-card .team-person {
+  min-height: 3.6rem;
+}
+
+@media (min-width: 801px) {
+  .settings-card .team-entry {
+    margin-inline: -9px;
+  }
+  .settings-card .team-person {
+    padding-inline: 12px;
+  }
+  .settings .role-menu {
+    inset: calc(100% + 4px) 0 auto;
+  }
+  .settings .field input {
+    height: 41px;
+    min-height: 41px;
+  }
+}

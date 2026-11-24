@@ -1,0 +1,27 @@
+.task-row {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 0.43rem 0.3rem;
+}
+.task-check {
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  color: var(--muted);
+}
+.task-check[aria-pressed="true"] {
+  color: var(--mint);
+}
+.task-name {
+  display: grid;
+  flex: 1;
+  gap: 0.12rem;
+  text-align: left;
+}
+.task-name small {
+  color: var(--muted);
+  font-size: 0.72rem;
+}

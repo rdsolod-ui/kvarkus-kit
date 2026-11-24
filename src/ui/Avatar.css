@@ -1,0 +1,17 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 2.7rem;
+  height: 2.7rem;
+  font: 750 1rem var(--display);
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+}
+.avatar.violet {
+  background: linear-gradient(140deg, #7168bb, #463a79);
+}
+.avatar.blue {
+  background: linear-gradient(140deg, #4386a2, #274d6d);
+}

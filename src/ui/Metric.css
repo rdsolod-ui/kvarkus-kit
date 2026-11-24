@@ -1,0 +1,68 @@
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.1rem 1.22rem;
+  text-align: left;
+  gap: 0.75rem;
+}
+.metric-name {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+.metric-icon {
+  display: grid;
+  place-items: center;
+  width: 1.95rem;
+  height: 1.95rem;
+  border-radius: 0.66rem;
+  background: var(--accent);
+  color: white;
+}
+.metric-icon svg {
+  width: 1.17rem;
+  height: 1.17rem;
+}
+.metric-icon.violet {
+  background: linear-gradient(145deg, #7956ff, #b69aff);
+}
+.metric-icon.gold {
+  background: linear-gradient(145deg, #ff8d3c, #ffcd70);
+}
+.metric-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font: 730 2rem var(--display);
+  letter-spacing: -0.04em;
+}
+.metric-value small {
+  font: 800 0.7rem var(--face);
+  color: var(--mint);
+  letter-spacing: -0.025em;
+}
+
+.metric-name {
+  align-self: stretch;
+}
+.metric-icon {
+  flex: none;
+}
+
+.metric-value {
+  align-self: stretch;
+}
+@media (max-width: 800px), (max-height: 540px) {
+  .main-glass .metric-value small {
+    align-self: stretch;
+    line-height: 16px;
+  }
+  .main-glass .metric-value {
+    gap: 5px;
+  }
+}
